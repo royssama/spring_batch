@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbatch.mybatis.TestBatchMapper">
+
+    <update id="createTestTableIfNotExists">
+        BEGIN
+            EXECUTE IMMEDIATE '
+                CREATE TABLE TEST (
+                    ID NUMBER(19,0) PRIMARY KEY,
+                    COL1 VARCHAR2(100),
+                    COL2 VARCHAR2(100),
+                    COL3 VARCHAR2(100)
+                )';
+        EXCEPTION
+            WHEN OTHERS THEN
+                IF SQLCODE != -955 THEN
+                    RAISE;
+                END IF;
+        END;
+    </update>
+
+    <insert id="insertRow">
+        INSERT INTO TEST (ID, COL1, COL2, COL3)
+        VALUES (#{id}, #{col1}, #{col2}, #{col3})
+    </insert>
+
+    <select id="nextId" resultType="long">
+        SELECT NVL(MAX(ID), 0) + 1 FROM TEST
+    </select>
+
+    <update id="updateCol2">
+        UPDATE TEST
+        SET COL2 = 'U5-' || TO_CHAR(SYSTIMESTAMP, 'YYYYMMDDHH24MISSFF3')
+    </update>
+
+    <update id="updateCol3">
+        UPDATE TEST
+        SET COL3 = 'U10-' || TO_CHAR(SYSTIMESTAMP, 'YYYYMMDDHH24MISSFF3')
+    </update>
+
+    <select id="countRows" resultType="int">
+        SELECT COUNT(*) FROM TEST
+    </select>
+
+    <delete id="deleteAll">
+        DELETE FROM TEST
+    </delete>
+</mapper>
