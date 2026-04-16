@@ -4,7 +4,6 @@ import com.example.springbatch.mybatis.TestBatchMapper;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -26,8 +25,7 @@ public class TestBatchScheduler {
         log.info("TEST table is ready.");
     }
 
-    // default cron: 0 * * * * *
-    @Scheduled(cron = "0 * * * * *")
+    // default cron: 0 * * * * * (triggered by AllBatchScheduler)
     public void insertEveryMinute() {
         long id = testBatchMapper.nextId();
         String now = LocalDateTime.now().toString();
@@ -35,29 +33,25 @@ public class TestBatchScheduler {
         log.info("[INSERT/1m] id={}, inserted={}", id, inserted);
     }
 
-    // default cron: */5 * * * * *
-    @Scheduled(cron = "*/5 * * * * *")
+    // default cron: */5 * * * * * (triggered by AllBatchScheduler)
     public void updateEvery5Seconds() {
         int updated = testBatchMapper.updateCol2();
         log.info("[UPDATE/5s] updated={}", updated);
     }
 
-    // default cron: */10 * * * * *
-    @Scheduled(cron = "*/10 * * * * *")
+    // default cron: */10 * * * * * (triggered by AllBatchScheduler)
     public void updateEvery10Seconds() {
         int updated = testBatchMapper.updateCol3();
         log.info("[UPDATE/10s] updated={}", updated);
     }
 
-    // default cron: */15 * * * * *
-    @Scheduled(cron = "*/15 * * * * *")
+    // default cron: */15 * * * * * (triggered by AllBatchScheduler)
     public void selectEvery15Seconds() {
         int count = testBatchMapper.countRows();
         log.info("[SELECT/15s] totalRows={}", count);
     }
 
-    // default cron: 30 * * * * *
-    @Scheduled(cron = "30 * * * * *")
+    // default cron: 30 * * * * * (triggered by AllBatchScheduler)
     public void deleteAllEveryMinute() {
         int deleted = testBatchMapper.deleteAll();
         log.info("[DELETE/1m] deleted={}", deleted);

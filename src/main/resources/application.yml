@@ -29,3 +29,16 @@ logging:
     jdbc.sqlonly: off
     jdbc.sqltiming: off
     org.mybatis: debug
+
+app:
+  batch:
+    general:
+      insert-cron: "*/5 * * * * *"
+      update5s-cron: "*/10 * * * * *"
+      update10s-cron: "*/15 * * * * *"
+      select15s-cron: "*/20 * * * * *"
+      delete-cron: "*/25 * * * * *"
+    tasklet:
+      cron: "*/30 * * * * *"
+    chunk:
+      cron: "*/35 * * * * *"

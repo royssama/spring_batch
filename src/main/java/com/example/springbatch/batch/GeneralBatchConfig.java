@@ -10,21 +10,21 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
-public class BatchConfig {
+public class GeneralBatchConfig {
 
     @Bean
-    public Step sampleStep(JobRepository jobRepository,
-                           PlatformTransactionManager transactionManager,
-                           SampleTasklet sampleTasklet) {
-        return new StepBuilder("sampleStep", jobRepository)
-                .tasklet(sampleTasklet, transactionManager)
+    public Step generalSampleStep(JobRepository jobRepository,
+                                  PlatformTransactionManager transactionManager,
+                                  GeneralSampleTasklet generalSampleTasklet) {
+        return new StepBuilder("generalSampleStep", jobRepository)
+                .tasklet(generalSampleTasklet, transactionManager)
                 .build();
     }
 
     @Bean
-    public Job sampleJob(JobRepository jobRepository, Step sampleStep) {
-        return new JobBuilder("sampleJob", jobRepository)
-                .start(sampleStep)
+    public Job generalSampleJob(JobRepository jobRepository, Step generalSampleStep) {
+        return new JobBuilder("generalSampleJob", jobRepository)
+                .start(generalSampleStep)
                 .build();
     }
 }

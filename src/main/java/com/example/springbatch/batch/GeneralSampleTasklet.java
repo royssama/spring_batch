@@ -11,13 +11,13 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 @Component
-public class SampleTasklet implements Tasklet {
+public class GeneralSampleTasklet implements Tasklet {
 
-    private static final Logger log = LoggerFactory.getLogger(SampleTasklet.class);
+    private static final Logger log = LoggerFactory.getLogger(GeneralSampleTasklet.class);
 
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) {
-        log.info("Spring Batch sample task started at {}", LocalDateTime.now());
+        log.info("General sample batch task started at {}", LocalDateTime.now());
         return RepeatStatus.FINISHED;
     }
 }

@@ -1,0 +1,493 @@
+2026-04-16 23:10:50.428 INFO  [main] c.e.s.SpringBatchApplication - Starting SpringBatchApplication using Java 21.0.10 with PID 21180 (C:\projects\spring_batch\target\classes started by phy in C:\projects\spring_batch)
+2026-04-16 23:10:50.430 INFO  [main] c.e.s.SpringBatchApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-16 23:10:51.039 DEBUG [main] o.m.s.b.a.MybatisAutoConfiguration - Searching for mappers annotated with @Mapper
+2026-04-16 23:10:51.040 DEBUG [main] o.m.s.b.a.MybatisAutoConfiguration - Using auto-configuration base package 'com.example.springbatch'
+2026-04-16 23:10:51.211 DEBUG [main] o.m.s.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\projects\spring_batch\target\classes\com\example\springbatch\batchChunk\ChunkBatchMapper.class]
+2026-04-16 23:10:51.211 DEBUG [main] o.m.s.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\projects\spring_batch\target\classes\com\example\springbatch\batchTasklet\TaskletBatchMapper.class]
+2026-04-16 23:10:51.211 DEBUG [main] o.m.s.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\projects\spring_batch\target\classes\com\example\springbatch\mybatis\TestBatchMapper.class]
+2026-04-16 23:10:51.212 DEBUG [main] o.m.s.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'chunkBatchMapper' and 'com.example.springbatch.batchChunk.ChunkBatchMapper' mapperInterface
+2026-04-16 23:10:51.215 DEBUG [main] o.m.s.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'taskletBatchMapper' and 'com.example.springbatch.batchTasklet.TaskletBatchMapper' mapperInterface
+2026-04-16 23:10:51.216 DEBUG [main] o.m.s.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'testBatchMapper' and 'com.example.springbatch.mybatis.TestBatchMapper' mapperInterface
+2026-04-16 23:10:51.348 WARN  [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [jobRegistryBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2026-04-16 23:10:51.382 WARN  [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [jobRegistryBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2026-04-16 23:10:51.384 WARN  [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration$PooledDataSourceConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration$PooledDataSourceConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [jobRegistryBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2026-04-16 23:10:51.385 WARN  [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'jdbcConnectionDetails' of type [org.springframework.boot.autoconfigure.jdbc.PropertiesJdbcConnectionDetails] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [jobRegistryBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2026-04-16 23:10:51.402 WARN  [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'dataSource' of type [com.zaxxer.hikari.HikariDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [jobRegistryBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2026-04-16 23:10:51.407 WARN  [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$JdbcTransactionManagerConfiguration' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$JdbcTransactionManagerConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [jobRegistryBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2026-04-16 23:10:51.413 WARN  [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizationAutoConfiguration' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizationAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [jobRegistryBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2026-04-16 23:10:51.419 WARN  [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'transactionExecutionListeners' of type [org.springframework.boot.autoconfigure.transaction.ExecutionListenersTransactionManagerCustomizer] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [jobRegistryBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2026-04-16 23:10:51.423 WARN  [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties' of type [org.springframework.boot.autoconfigure.transaction.TransactionProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [jobRegistryBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2026-04-16 23:10:51.424 WARN  [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'platformTransactionManagerCustomizers' of type [org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [jobRegistryBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2026-04-16 23:10:51.437 WARN  [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'transactionManager' of type [org.springframework.jdbc.support.JdbcTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [jobRegistryBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2026-04-16 23:10:51.448 WARN  [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'spring.batch-org.springframework.boot.autoconfigure.batch.BatchProperties' of type [org.springframework.boot.autoconfigure.batch.BatchProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [jobRegistryBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2026-04-16 23:10:51.457 WARN  [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.boot.autoconfigure.batch.BatchAutoConfiguration$SpringBootBatchConfiguration' of type [org.springframework.boot.autoconfigure.batch.BatchAutoConfiguration$SpringBootBatchConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [jobRegistryBeanPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2026-04-16 23:10:51.707 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-04-16 23:10:51.720 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-16 23:10:51.725 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-16 23:10:51.725 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-04-16 23:10:51.787 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-16 23:10:51.787 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1312 ms
+2026-04-16 23:10:51.865 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-16 23:10:52.335 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.p6spy.engine.wrapper.ConnectionWrapper@61e86192
+2026-04-16 23:10:52.337 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-16 23:10:52.493 INFO  [main] p6spy - #1776348652493 | took 34ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+CREATE TABLE BATCH_JOB_INSTANCE ( JOB_INSTANCE_ID NUMBER(19,0) NOT NULL PRIMARY KEY , VERSION NUMBER(19,0) , JOB_NAME VARCHAR2(100 char) NOT NULL, JOB_KEY VARCHAR2(32 char) NOT NULL, constraint JOB_INST_UN unique (JOB_NAME, JOB_KEY) ) SEGMENT CREATION IMMEDIATE
+CREATE TABLE BATCH_JOB_INSTANCE ( JOB_INSTANCE_ID NUMBER(19,0) NOT NULL PRIMARY KEY , VERSION NUMBER(19,0) , JOB_NAME VARCHAR2(100 char) NOT NULL, JOB_KEY VARCHAR2(32 char) NOT NULL, constraint JOB_INST_UN unique (JOB_NAME, JOB_KEY) ) SEGMENT CREATION IMMEDIATE;
+2026-04-16 23:10:52.498 INFO  [main] p6spy - #1776348652498 | took 4ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+CREATE TABLE BATCH_JOB_EXECUTION ( JOB_EXECUTION_ID NUMBER(19,0) NOT NULL PRIMARY KEY , VERSION NUMBER(19,0) , JOB_INSTANCE_ID NUMBER(19,0) NOT NULL, CREATE_TIME TIMESTAMP(9) NOT NULL, START_TIME TIMESTAMP(9) DEFAULT NULL , END_TIME TIMESTAMP(9) DEFAULT NULL , STATUS VARCHAR2(10 char) , EXIT_CODE VARCHAR2(2500 char) , EXIT_MESSAGE VARCHAR2(2500 char) , LAST_UPDATED TIMESTAMP(9), constraint JOB_INST_EXEC_FK foreign key (JOB_INSTANCE_ID) references BATCH_JOB_INSTANCE(JOB_INSTANCE_ID) ) SEGMENT CREATION IMMEDIATE
+CREATE TABLE BATCH_JOB_EXECUTION ( JOB_EXECUTION_ID NUMBER(19,0) NOT NULL PRIMARY KEY , VERSION NUMBER(19,0) , JOB_INSTANCE_ID NUMBER(19,0) NOT NULL, CREATE_TIME TIMESTAMP(9) NOT NULL, START_TIME TIMESTAMP(9) DEFAULT NULL , END_TIME TIMESTAMP(9) DEFAULT NULL , STATUS VARCHAR2(10 char) , EXIT_CODE VARCHAR2(2500 char) , EXIT_MESSAGE VARCHAR2(2500 char) , LAST_UPDATED TIMESTAMP(9), constraint JOB_INST_EXEC_FK foreign key (JOB_INSTANCE_ID) references BATCH_JOB_INSTANCE(JOB_INSTANCE_ID) ) SEGMENT CREATION IMMEDIATE;
+2026-04-16 23:10:52.502 INFO  [main] p6spy - #1776348652502 | took 3ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+CREATE TABLE BATCH_JOB_EXECUTION_PARAMS ( JOB_EXECUTION_ID NUMBER(19,0) NOT NULL , PARAMETER_NAME VARCHAR(100 char) NOT NULL , PARAMETER_TYPE VARCHAR(100 char) NOT NULL , PARAMETER_VALUE VARCHAR(2500 char) , IDENTIFYING CHAR(1) NOT NULL , constraint JOB_EXEC_PARAMS_FK foreign key (JOB_EXECUTION_ID) references BATCH_JOB_EXECUTION(JOB_EXECUTION_ID) ) SEGMENT CREATION IMMEDIATE
+CREATE TABLE BATCH_JOB_EXECUTION_PARAMS ( JOB_EXECUTION_ID NUMBER(19,0) NOT NULL , PARAMETER_NAME VARCHAR(100 char) NOT NULL , PARAMETER_TYPE VARCHAR(100 char) NOT NULL , PARAMETER_VALUE VARCHAR(2500 char) , IDENTIFYING CHAR(1) NOT NULL , constraint JOB_EXEC_PARAMS_FK foreign key (JOB_EXECUTION_ID) references BATCH_JOB_EXECUTION(JOB_EXECUTION_ID) ) SEGMENT CREATION IMMEDIATE;
+2026-04-16 23:10:52.505 INFO  [main] p6spy - #1776348652505 | took 2ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+CREATE TABLE BATCH_STEP_EXECUTION ( STEP_EXECUTION_ID NUMBER(19,0) NOT NULL PRIMARY KEY , VERSION NUMBER(19,0) NOT NULL, STEP_NAME VARCHAR2(100 char) NOT NULL, JOB_EXECUTION_ID NUMBER(19,0) NOT NULL, CREATE_TIME TIMESTAMP(9) NOT NULL, START_TIME TIMESTAMP(9) DEFAULT NULL , END_TIME TIMESTAMP(9) DEFAULT NULL , STATUS VARCHAR2(10 char) , COMMIT_COUNT NUMBER(19,0) , READ_COUNT NUMBER(19,0) , FILTER_COUNT NUMBER(19,0) , WRITE_COUNT NUMBER(19,0) , READ_SKIP_COUNT NUMBER(19,0) , WRITE_SKIP_COUNT NUMBER(19,0) , PROCESS_SKIP_COUNT NUMBER(19,0) , ROLLBACK_COUNT NUMBER(19,0) , EXIT_CODE VARCHAR2(2500 char) , EXIT_MESSAGE VARCHAR2(2500 char) , LAST_UPDATED TIMESTAMP(9), constraint JOB_EXEC_STEP_FK foreign key (JOB_EXECUTION_ID) references BATCH_JOB_EXECUTION(JOB_EXECUTION_ID) ) SEGMENT CREATION IMMEDIATE
+CREATE TABLE BATCH_STEP_EXECUTION ( STEP_EXECUTION_ID NUMBER(19,0) NOT NULL PRIMARY KEY , VERSION NUMBER(19,0) NOT NULL, STEP_NAME VARCHAR2(100 char) NOT NULL, JOB_EXECUTION_ID NUMBER(19,0) NOT NULL, CREATE_TIME TIMESTAMP(9) NOT NULL, START_TIME TIMESTAMP(9) DEFAULT NULL , END_TIME TIMESTAMP(9) DEFAULT NULL , STATUS VARCHAR2(10 char) , COMMIT_COUNT NUMBER(19,0) , READ_COUNT NUMBER(19,0) , FILTER_COUNT NUMBER(19,0) , WRITE_COUNT NUMBER(19,0) , READ_SKIP_COUNT NUMBER(19,0) , WRITE_SKIP_COUNT NUMBER(19,0) , PROCESS_SKIP_COUNT NUMBER(19,0) , ROLLBACK_COUNT NUMBER(19,0) , EXIT_CODE VARCHAR2(2500 char) , EXIT_MESSAGE VARCHAR2(2500 char) , LAST_UPDATED TIMESTAMP(9), constraint JOB_EXEC_STEP_FK foreign key (JOB_EXECUTION_ID) references BATCH_JOB_EXECUTION(JOB_EXECUTION_ID) ) SEGMENT CREATION IMMEDIATE;
+2026-04-16 23:10:52.507 INFO  [main] p6spy - #1776348652507 | took 3ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+CREATE TABLE BATCH_STEP_EXECUTION_CONTEXT ( STEP_EXECUTION_ID NUMBER(19,0) NOT NULL PRIMARY KEY, SHORT_CONTEXT VARCHAR2(2500 char) NOT NULL, SERIALIZED_CONTEXT CLOB , constraint STEP_EXEC_CTX_FK foreign key (STEP_EXECUTION_ID) references BATCH_STEP_EXECUTION(STEP_EXECUTION_ID) ) SEGMENT CREATION IMMEDIATE
+CREATE TABLE BATCH_STEP_EXECUTION_CONTEXT ( STEP_EXECUTION_ID NUMBER(19,0) NOT NULL PRIMARY KEY, SHORT_CONTEXT VARCHAR2(2500 char) NOT NULL, SERIALIZED_CONTEXT CLOB , constraint STEP_EXEC_CTX_FK foreign key (STEP_EXECUTION_ID) references BATCH_STEP_EXECUTION(STEP_EXECUTION_ID) ) SEGMENT CREATION IMMEDIATE;
+2026-04-16 23:10:52.511 INFO  [main] p6spy - #1776348652511 | took 3ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+CREATE TABLE BATCH_JOB_EXECUTION_CONTEXT ( JOB_EXECUTION_ID NUMBER(19,0) NOT NULL PRIMARY KEY, SHORT_CONTEXT VARCHAR2(2500 char) NOT NULL, SERIALIZED_CONTEXT CLOB , constraint JOB_EXEC_CTX_FK foreign key (JOB_EXECUTION_ID) references BATCH_JOB_EXECUTION(JOB_EXECUTION_ID) ) SEGMENT CREATION IMMEDIATE
+CREATE TABLE BATCH_JOB_EXECUTION_CONTEXT ( JOB_EXECUTION_ID NUMBER(19,0) NOT NULL PRIMARY KEY, SHORT_CONTEXT VARCHAR2(2500 char) NOT NULL, SERIALIZED_CONTEXT CLOB , constraint JOB_EXEC_CTX_FK foreign key (JOB_EXECUTION_ID) references BATCH_JOB_EXECUTION(JOB_EXECUTION_ID) ) SEGMENT CREATION IMMEDIATE;
+2026-04-16 23:10:52.512 INFO  [main] p6spy - #1776348652512 | took 1ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+CREATE SEQUENCE BATCH_STEP_EXECUTION_SEQ START WITH 0 MINVALUE 0 MAXVALUE 9223372036854775807 ORDER NOCYCLE
+CREATE SEQUENCE BATCH_STEP_EXECUTION_SEQ START WITH 0 MINVALUE 0 MAXVALUE 9223372036854775807 ORDER NOCYCLE;
+2026-04-16 23:10:52.514 INFO  [main] p6spy - #1776348652514 | took 1ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+CREATE SEQUENCE BATCH_JOB_EXECUTION_SEQ START WITH 0 MINVALUE 0 MAXVALUE 9223372036854775807 ORDER NOCYCLE
+CREATE SEQUENCE BATCH_JOB_EXECUTION_SEQ START WITH 0 MINVALUE 0 MAXVALUE 9223372036854775807 ORDER NOCYCLE;
+2026-04-16 23:10:52.516 INFO  [main] p6spy - #1776348652516 | took 1ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+CREATE SEQUENCE BATCH_JOB_SEQ START WITH 0 MINVALUE 0 MAXVALUE 9223372036854775807 ORDER NOCYCLE
+CREATE SEQUENCE BATCH_JOB_SEQ START WITH 0 MINVALUE 0 MAXVALUE 9223372036854775807 ORDER NOCYCLE;
+2026-04-16 23:10:52.830 DEBUG [main] o.m.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\projects\spring_batch\target\classes\mapper\ChunkBatchMapper.xml]'
+2026-04-16 23:10:52.844 DEBUG [main] o.m.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\projects\spring_batch\target\classes\mapper\TaskletBatchMapper.xml]'
+2026-04-16 23:10:52.855 DEBUG [main] o.m.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\projects\spring_batch\target\classes\mapper\TestBatchMapper.xml]'
+2026-04-16 23:10:52.875 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:10:52.887 DEBUG [main] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@fe8aaeb] was not registered for synchronization because synchronization is not active
+2026-04-16 23:10:52.900 DEBUG [main] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@753816421 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:10:52.983 INFO  [main] p6spy - #1776348652983 | took 40ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+BEGIN
+            EXECUTE IMMEDIATE '
+                CREATE TABLE TEST_TASKLET (
+                    ID NUMBER GENERATED BY DEFAULT ON NULL AS IDENTITY PRIMARY KEY,
+                    MESSAGE VARCHAR2(200),
+                    CREATED_AT TIMESTAMP DEFAULT SYSTIMESTAMP
+                )';
+        EXCEPTION
+            WHEN OTHERS THEN
+                IF SQLCODE != -955 THEN
+                    RAISE;
+                END IF;
+        END;
+BEGIN
+            EXECUTE IMMEDIATE '
+                CREATE TABLE TEST_TASKLET (
+                    ID NUMBER GENERATED BY DEFAULT ON NULL AS IDENTITY PRIMARY KEY,
+                    MESSAGE VARCHAR2(200),
+                    CREATED_AT TIMESTAMP DEFAULT SYSTIMESTAMP
+                )';
+        EXCEPTION
+            WHEN OTHERS THEN
+                IF SQLCODE != -955 THEN
+                    RAISE;
+                END IF;
+        END;;
+2026-04-16 23:10:52.983 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@fe8aaeb]
+2026-04-16 23:10:52.992 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:10:52.992 DEBUG [main] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2ba024cb] was not registered for synchronization because synchronization is not active
+2026-04-16 23:10:52.992 DEBUG [main] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@2062604571 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:10:53.000 INFO  [main] p6spy - #1776348653000 | took 11ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+BEGIN
+            EXECUTE IMMEDIATE '
+                CREATE TABLE TEST_CHUNK_SOURCE (
+                    ID NUMBER(19,0) PRIMARY KEY,
+                    COL1 VARCHAR2(100),
+                    COL2 VARCHAR2(100),
+                    COL3 VARCHAR2(100),
+                    PROCESSED CHAR(1) DEFAULT ''N'' NOT NULL
+                )';
+        EXCEPTION
+            WHEN OTHERS THEN
+                IF SQLCODE != -955 THEN
+                    RAISE;
+                END IF;
+        END;
+BEGIN
+            EXECUTE IMMEDIATE '
+                CREATE TABLE TEST_CHUNK_SOURCE (
+                    ID NUMBER(19,0) PRIMARY KEY,
+                    COL1 VARCHAR2(100),
+                    COL2 VARCHAR2(100),
+                    COL3 VARCHAR2(100),
+                    PROCESSED CHAR(1) DEFAULT ''N'' NOT NULL
+                )';
+        EXCEPTION
+            WHEN OTHERS THEN
+                IF SQLCODE != -955 THEN
+                    RAISE;
+                END IF;
+        END;;
+2026-04-16 23:10:53.000 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2ba024cb]
+2026-04-16 23:10:53.000 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:10:53.000 DEBUG [main] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1c7f6e96] was not registered for synchronization because synchronization is not active
+2026-04-16 23:10:53.000 DEBUG [main] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@820781338 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:10:53.015 INFO  [main] p6spy - #1776348653015 | took 11ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+BEGIN
+            EXECUTE IMMEDIATE '
+                CREATE TABLE TEST_CHUNK_TARGET (
+                    ID NUMBER(19,0) PRIMARY KEY,
+                    COL1 VARCHAR2(100),
+                    COL2 VARCHAR2(100),
+                    COL3 VARCHAR2(100),
+                    CREATED_AT TIMESTAMP DEFAULT SYSTIMESTAMP
+                )';
+        EXCEPTION
+            WHEN OTHERS THEN
+                IF SQLCODE != -955 THEN
+                    RAISE;
+                END IF;
+        END;
+BEGIN
+            EXECUTE IMMEDIATE '
+                CREATE TABLE TEST_CHUNK_TARGET (
+                    ID NUMBER(19,0) PRIMARY KEY,
+                    COL1 VARCHAR2(100),
+                    COL2 VARCHAR2(100),
+                    COL3 VARCHAR2(100),
+                    CREATED_AT TIMESTAMP DEFAULT SYSTIMESTAMP
+                )';
+        EXCEPTION
+            WHEN OTHERS THEN
+                IF SQLCODE != -955 THEN
+                    RAISE;
+                END IF;
+        END;;
+2026-04-16 23:10:53.015 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1c7f6e96]
+2026-04-16 23:10:53.015 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:10:53.015 DEBUG [main] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1ac0cdb0] was not registered for synchronization because synchronization is not active
+2026-04-16 23:10:53.020 DEBUG [main] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@1848568533 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:10:53.220 INFO  [main] p6spy - #1776348653220 | took 199ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+SELECT COUNT(*) FROM TEST_CHUNK_SOURCE
+SELECT COUNT(*) FROM TEST_CHUNK_SOURCE;
+2026-04-16 23:10:53.233 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1ac0cdb0]
+2026-04-16 23:10:53.240 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:10:53.240 DEBUG [main] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@cdbe995] was not registered for synchronization because synchronization is not active
+2026-04-16 23:10:53.240 DEBUG [main] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@2111069331 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:10:53.288 INFO  [main] p6spy - #1776348653288 | took 43ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (?, ?, ?, ?, 'N')
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (1, 'source-1', 'col2-1', 'col3-1', 'N');
+2026-04-16 23:10:53.289 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@cdbe995]
+2026-04-16 23:10:53.289 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:10:53.289 DEBUG [main] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b4954b2] was not registered for synchronization because synchronization is not active
+2026-04-16 23:10:53.289 DEBUG [main] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@1961805376 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:10:53.291 INFO  [main] p6spy - #1776348653291 | took 1ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (?, ?, ?, ?, 'N')
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (2, 'source-2', 'col2-2', 'col3-2', 'N');
+2026-04-16 23:10:53.291 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b4954b2]
+2026-04-16 23:10:53.291 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:10:53.292 DEBUG [main] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3973b6d4] was not registered for synchronization because synchronization is not active
+2026-04-16 23:10:53.292 DEBUG [main] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@417167207 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:10:53.293 INFO  [main] p6spy - #1776348653293 | took 1ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (?, ?, ?, ?, 'N')
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (3, 'source-3', 'col2-3', 'col3-3', 'N');
+2026-04-16 23:10:53.294 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3973b6d4]
+2026-04-16 23:10:53.294 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:10:53.294 DEBUG [main] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@9205c0a] was not registered for synchronization because synchronization is not active
+2026-04-16 23:10:53.295 DEBUG [main] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@201213864 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:10:53.297 INFO  [main] p6spy - #1776348653297 | took 1ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (?, ?, ?, ?, 'N')
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (4, 'source-4', 'col2-4', 'col3-4', 'N');
+2026-04-16 23:10:53.297 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@9205c0a]
+2026-04-16 23:10:53.297 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:10:53.297 DEBUG [main] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2f1f9515] was not registered for synchronization because synchronization is not active
+2026-04-16 23:10:53.298 DEBUG [main] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@1552595422 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:10:53.299 INFO  [main] p6spy - #1776348653299 | took 1ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (?, ?, ?, ?, 'N')
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (5, 'source-5', 'col2-5', 'col3-5', 'N');
+2026-04-16 23:10:53.299 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2f1f9515]
+2026-04-16 23:10:53.299 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:10:53.299 DEBUG [main] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@57416e49] was not registered for synchronization because synchronization is not active
+2026-04-16 23:10:53.300 DEBUG [main] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@779857934 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:10:53.301 INFO  [main] p6spy - #1776348653301 | took 1ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (?, ?, ?, ?, 'N')
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (6, 'source-6', 'col2-6', 'col3-6', 'N');
+2026-04-16 23:10:53.301 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@57416e49]
+2026-04-16 23:10:53.301 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:10:53.301 DEBUG [main] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7d1f3fe9] was not registered for synchronization because synchronization is not active
+2026-04-16 23:10:53.302 DEBUG [main] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@1959931357 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:10:53.303 INFO  [main] p6spy - #1776348653303 | took 0ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (?, ?, ?, ?, 'N')
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (7, 'source-7', 'col2-7', 'col3-7', 'N');
+2026-04-16 23:10:53.303 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7d1f3fe9]
+2026-04-16 23:10:53.303 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:10:53.303 DEBUG [main] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@283d3628] was not registered for synchronization because synchronization is not active
+2026-04-16 23:10:53.303 DEBUG [main] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@1530206433 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:10:53.305 INFO  [main] p6spy - #1776348653305 | took 0ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (?, ?, ?, ?, 'N')
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (8, 'source-8', 'col2-8', 'col3-8', 'N');
+2026-04-16 23:10:53.305 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@283d3628]
+2026-04-16 23:10:53.305 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:10:53.305 DEBUG [main] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5fd18419] was not registered for synchronization because synchronization is not active
+2026-04-16 23:10:53.305 DEBUG [main] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@982054651 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:10:53.306 INFO  [main] p6spy - #1776348653306 | took 1ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (?, ?, ?, ?, 'N')
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (9, 'source-9', 'col2-9', 'col3-9', 'N');
+2026-04-16 23:10:53.307 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5fd18419]
+2026-04-16 23:10:53.307 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:10:53.307 DEBUG [main] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7b451bf4] was not registered for synchronization because synchronization is not active
+2026-04-16 23:10:53.307 DEBUG [main] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@138733165 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:10:53.308 INFO  [main] p6spy - #1776348653308 | took 1ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (?, ?, ?, ?, 'N')
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (10, 'source-10', 'col2-10', 'col3-10', 'N');
+2026-04-16 23:10:53.310 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7b451bf4]
+2026-04-16 23:10:53.310 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:10:53.310 DEBUG [main] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b665a30] was not registered for synchronization because synchronization is not active
+2026-04-16 23:10:53.310 DEBUG [main] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@648302729 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:10:53.311 INFO  [main] p6spy - #1776348653311 | took 1ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (?, ?, ?, ?, 'N')
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (11, 'source-11', 'col2-11', 'col3-11', 'N');
+2026-04-16 23:10:53.312 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b665a30]
+2026-04-16 23:10:53.312 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:10:53.312 DEBUG [main] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@75ed7512] was not registered for synchronization because synchronization is not active
+2026-04-16 23:10:53.312 DEBUG [main] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@1521848908 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:10:53.313 INFO  [main] p6spy - #1776348653313 | took 1ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (?, ?, ?, ?, 'N')
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (12, 'source-12', 'col2-12', 'col3-12', 'N');
+2026-04-16 23:10:53.314 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@75ed7512]
+2026-04-16 23:10:53.314 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:10:53.314 DEBUG [main] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@33ebe4f0] was not registered for synchronization because synchronization is not active
+2026-04-16 23:10:53.314 DEBUG [main] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@936368668 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:10:53.315 INFO  [main] p6spy - #1776348653315 | took 1ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (?, ?, ?, ?, 'N')
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (13, 'source-13', 'col2-13', 'col3-13', 'N');
+2026-04-16 23:10:53.316 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@33ebe4f0]
+2026-04-16 23:10:53.316 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:10:53.316 DEBUG [main] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@29147c12] was not registered for synchronization because synchronization is not active
+2026-04-16 23:10:53.317 DEBUG [main] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@1598405774 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:10:53.318 INFO  [main] p6spy - #1776348653318 | took 0ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (?, ?, ?, ?, 'N')
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (14, 'source-14', 'col2-14', 'col3-14', 'N');
+2026-04-16 23:10:53.318 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@29147c12]
+2026-04-16 23:10:53.318 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:10:53.318 DEBUG [main] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@33e50ff2] was not registered for synchronization because synchronization is not active
+2026-04-16 23:10:53.318 DEBUG [main] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@2058566824 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:10:53.320 INFO  [main] p6spy - #1776348653320 | took 0ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (?, ?, ?, ?, 'N')
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (15, 'source-15', 'col2-15', 'col3-15', 'N');
+2026-04-16 23:10:53.320 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@33e50ff2]
+2026-04-16 23:10:53.320 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:10:53.320 DEBUG [main] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@704d3b00] was not registered for synchronization because synchronization is not active
+2026-04-16 23:10:53.320 DEBUG [main] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@35539019 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:10:53.320 INFO  [main] p6spy - #1776348653320 | took 0ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (?, ?, ?, ?, 'N')
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (16, 'source-16', 'col2-16', 'col3-16', 'N');
+2026-04-16 23:10:53.321 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@704d3b00]
+2026-04-16 23:10:53.321 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:10:53.321 DEBUG [main] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@191f4d65] was not registered for synchronization because synchronization is not active
+2026-04-16 23:10:53.321 DEBUG [main] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@2049602706 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:10:53.322 INFO  [main] p6spy - #1776348653322 | took 0ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (?, ?, ?, ?, 'N')
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (17, 'source-17', 'col2-17', 'col3-17', 'N');
+2026-04-16 23:10:53.322 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@191f4d65]
+2026-04-16 23:10:53.322 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:10:53.322 DEBUG [main] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6326c5ec] was not registered for synchronization because synchronization is not active
+2026-04-16 23:10:53.322 DEBUG [main] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@327845331 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:10:53.323 INFO  [main] p6spy - #1776348653323 | took 0ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (?, ?, ?, ?, 'N')
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (18, 'source-18', 'col2-18', 'col3-18', 'N');
+2026-04-16 23:10:53.323 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6326c5ec]
+2026-04-16 23:10:53.323 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:10:53.323 DEBUG [main] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@709d86a2] was not registered for synchronization because synchronization is not active
+2026-04-16 23:10:53.323 DEBUG [main] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@1505424071 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:10:53.324 INFO  [main] p6spy - #1776348653324 | took 0ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (?, ?, ?, ?, 'N')
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (19, 'source-19', 'col2-19', 'col3-19', 'N');
+2026-04-16 23:10:53.324 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@709d86a2]
+2026-04-16 23:10:53.324 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:10:53.324 DEBUG [main] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ce655b9] was not registered for synchronization because synchronization is not active
+2026-04-16 23:10:53.324 DEBUG [main] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@1267068395 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:10:53.325 INFO  [main] p6spy - #1776348653325 | took 0ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (?, ?, ?, ?, 'N')
+INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (20, 'source-20', 'col2-20', 'col3-20', 'N');
+2026-04-16 23:10:53.327 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ce655b9]
+2026-04-16 23:10:53.352 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:10:53.352 DEBUG [main] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@273aaab7] was not registered for synchronization because synchronization is not active
+2026-04-16 23:10:53.352 DEBUG [main] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@2008781167 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:10:53.356 INFO  [main] p6spy - #1776348653356 | took 3ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+BEGIN
+            EXECUTE IMMEDIATE '
+                CREATE TABLE TEST (
+                    ID NUMBER(19,0) PRIMARY KEY,
+                    COL1 VARCHAR2(100),
+                    COL2 VARCHAR2(100),
+                    COL3 VARCHAR2(100)
+                )';
+        EXCEPTION
+            WHEN OTHERS THEN
+                IF SQLCODE != -955 THEN
+                    RAISE;
+                END IF;
+        END;
+BEGIN
+            EXECUTE IMMEDIATE '
+                CREATE TABLE TEST (
+                    ID NUMBER(19,0) PRIMARY KEY,
+                    COL1 VARCHAR2(100),
+                    COL2 VARCHAR2(100),
+                    COL3 VARCHAR2(100)
+                )';
+        EXCEPTION
+            WHEN OTHERS THEN
+                IF SQLCODE != -955 THEN
+                    RAISE;
+                END IF;
+        END;;
+2026-04-16 23:10:53.356 DEBUG [main] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@273aaab7]
+2026-04-16 23:10:53.356 INFO  [main] c.e.s.batch.TestBatchScheduler - TEST table is ready.
+2026-04-16 23:10:53.786 DEBUG [main] o.m.s.b.a.MybatisAutoConfiguration - Not found configuration for registering mapper bean using @MapperScan, MapperFactoryBean and MapperScannerConfigurer.
+2026-04-16 23:10:53.925 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-04-16 23:10:53.957 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-04-16 23:10:53.985 INFO  [main] c.e.s.SpringBatchApplication - Started SpringBatchApplication in 4.142 seconds (process running for 4.565)
+2026-04-16 23:10:55.006 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:10:55.006 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4a1e8715] was not registered for synchronization because synchronization is not active
+2026-04-16 23:10:55.007 DEBUG [scheduling-1] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@611509856 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:10:55.027 INFO  [scheduling-1] p6spy - #1776348655027 | took 19ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+UPDATE TEST
+        SET COL2 = 'U5-' || TO_CHAR(SYSTIMESTAMP, 'YYYYMMDDHH24MISSFF3')
+UPDATE TEST
+        SET COL2 = 'U5-' || TO_CHAR(SYSTIMESTAMP, 'YYYYMMDDHH24MISSFF3');
+2026-04-16 23:10:55.027 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4a1e8715]
+2026-04-16 23:10:55.027 INFO  [scheduling-1] c.e.s.batch.TestBatchScheduler - [UPDATE/5s] updated=1
+2026-04-16 23:11:00.000 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:11:00.000 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2c877739] was not registered for synchronization because synchronization is not active
+2026-04-16 23:11:00.002 DEBUG [scheduling-1] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@527815983 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:11:00.013 INFO  [scheduling-1] p6spy - #1776348660013 | took 11ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+UPDATE TEST
+        SET COL3 = 'U10-' || TO_CHAR(SYSTIMESTAMP, 'YYYYMMDDHH24MISSFF3')
+UPDATE TEST
+        SET COL3 = 'U10-' || TO_CHAR(SYSTIMESTAMP, 'YYYYMMDDHH24MISSFF3');
+2026-04-16 23:11:00.014 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2c877739]
+2026-04-16 23:11:00.014 INFO  [scheduling-1] c.e.s.batch.TestBatchScheduler - [UPDATE/10s] updated=1
+2026-04-16 23:11:00.014 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:11:00.014 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3f1cad89] was not registered for synchronization because synchronization is not active
+2026-04-16 23:11:00.014 DEBUG [scheduling-1] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@1630104700 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:11:00.016 INFO  [scheduling-1] p6spy - #1776348660016 | took 1ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+SELECT COUNT(*) FROM TEST
+SELECT COUNT(*) FROM TEST;
+2026-04-16 23:11:00.016 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3f1cad89]
+2026-04-16 23:11:00.016 INFO  [scheduling-1] c.e.s.batch.TestBatchScheduler - [SELECT/15s] totalRows=1
+2026-04-16 23:11:00.017 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:11:00.017 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@47ed9e9d] was not registered for synchronization because synchronization is not active
+2026-04-16 23:11:00.017 DEBUG [scheduling-1] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@499581708 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:11:00.019 INFO  [scheduling-1] p6spy - #1776348660019 | took 1ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+SELECT NVL(MAX(ID), 0) + 1 FROM TEST
+SELECT NVL(MAX(ID), 0) + 1 FROM TEST;
+2026-04-16 23:11:00.020 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@47ed9e9d]
+2026-04-16 23:11:00.020 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:11:00.020 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@46d8d776] was not registered for synchronization because synchronization is not active
+2026-04-16 23:11:00.020 DEBUG [scheduling-1] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@1844097094 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:11:00.022 INFO  [scheduling-1] p6spy - #1776348660022 | took 1ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+INSERT INTO TEST (ID, COL1, COL2, COL3)
+        VALUES (?, ?, ?, ?)
+INSERT INTO TEST (ID, COL1, COL2, COL3)
+        VALUES (2, 'col1-2', 'col2-2026-04-16T23:11:00.020482700', 'col3-2026-04-16T23:11:00.020482700');
+2026-04-16 23:11:00.022 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@46d8d776]
+2026-04-16 23:11:00.022 INFO  [scheduling-1] c.e.s.batch.TestBatchScheduler - [INSERT/1m] id=2, inserted=1
+2026-04-16 23:11:00.022 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:11:00.022 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@48100194] was not registered for synchronization because synchronization is not active
+2026-04-16 23:11:00.022 DEBUG [scheduling-1] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@1099725620 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:11:00.023 INFO  [scheduling-1] p6spy - #1776348660023 | took 0ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+UPDATE TEST
+        SET COL2 = 'U5-' || TO_CHAR(SYSTIMESTAMP, 'YYYYMMDDHH24MISSFF3')
+UPDATE TEST
+        SET COL2 = 'U5-' || TO_CHAR(SYSTIMESTAMP, 'YYYYMMDDHH24MISSFF3');
+2026-04-16 23:11:00.023 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@48100194]
+2026-04-16 23:11:00.023 INFO  [scheduling-1] c.e.s.batch.TestBatchScheduler - [UPDATE/5s] updated=2
+2026-04-16 23:11:05.004 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:11:05.004 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@416f7714] was not registered for synchronization because synchronization is not active
+2026-04-16 23:11:05.006 DEBUG [scheduling-1] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@2034206719 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:11:05.016 INFO  [scheduling-1] p6spy - #1776348665016 | took 9ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+UPDATE TEST
+        SET COL2 = 'U5-' || TO_CHAR(SYSTIMESTAMP, 'YYYYMMDDHH24MISSFF3')
+UPDATE TEST
+        SET COL2 = 'U5-' || TO_CHAR(SYSTIMESTAMP, 'YYYYMMDDHH24MISSFF3');
+2026-04-16 23:11:05.017 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@416f7714]
+2026-04-16 23:11:05.017 INFO  [scheduling-1] c.e.s.batch.TestBatchScheduler - [UPDATE/5s] updated=2
+2026-04-16 23:11:10.000 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:11:10.000 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@31eb25ed] was not registered for synchronization because synchronization is not active
+2026-04-16 23:11:10.001 DEBUG [scheduling-1] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@329035071 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:11:10.011 INFO  [scheduling-1] p6spy - #1776348670011 | took 9ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+UPDATE TEST
+        SET COL3 = 'U10-' || TO_CHAR(SYSTIMESTAMP, 'YYYYMMDDHH24MISSFF3')
+UPDATE TEST
+        SET COL3 = 'U10-' || TO_CHAR(SYSTIMESTAMP, 'YYYYMMDDHH24MISSFF3');
+2026-04-16 23:11:10.011 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@31eb25ed]
+2026-04-16 23:11:10.011 INFO  [scheduling-1] c.e.s.batch.TestBatchScheduler - [UPDATE/10s] updated=2
+2026-04-16 23:11:10.012 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:11:10.012 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@29f1af8f] was not registered for synchronization because synchronization is not active
+2026-04-16 23:11:10.012 DEBUG [scheduling-1] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@754238769 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:11:10.014 INFO  [scheduling-1] p6spy - #1776348670014 | took 1ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+UPDATE TEST
+        SET COL2 = 'U5-' || TO_CHAR(SYSTIMESTAMP, 'YYYYMMDDHH24MISSFF3')
+UPDATE TEST
+        SET COL2 = 'U5-' || TO_CHAR(SYSTIMESTAMP, 'YYYYMMDDHH24MISSFF3');
+2026-04-16 23:11:10.014 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@29f1af8f]
+2026-04-16 23:11:10.014 INFO  [scheduling-1] c.e.s.batch.TestBatchScheduler - [UPDATE/5s] updated=2
+2026-04-16 23:11:15.000 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:11:15.000 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4458590f] was not registered for synchronization because synchronization is not active
+2026-04-16 23:11:15.001 DEBUG [scheduling-1] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@844882414 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:11:15.002 INFO  [scheduling-1] p6spy - #1776348675002 | took 0ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+SELECT COUNT(*) FROM TEST
+SELECT COUNT(*) FROM TEST;
+2026-04-16 23:11:15.002 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4458590f]
+2026-04-16 23:11:15.002 INFO  [scheduling-1] c.e.s.batch.TestBatchScheduler - [SELECT/15s] totalRows=2
+2026-04-16 23:11:15.003 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2026-04-16 23:11:15.003 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1c252f5f] was not registered for synchronization because synchronization is not active
+2026-04-16 23:11:15.003 DEBUG [scheduling-1] o.m.s.t.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@447978997 wrapping com.p6spy.engine.wrapper.ConnectionWrapper@61e86192] will not be managed by Spring
+2026-04-16 23:11:15.012 INFO  [scheduling-1] p6spy - #1776348675012 | took 9ms | statement | connection 0| url jdbc:p6spy:oracle:thin:@localhost:1521/FREEPDB1
+UPDATE TEST
+        SET COL2 = 'U5-' || TO_CHAR(SYSTIMESTAMP, 'YYYYMMDDHH24MISSFF3')
+UPDATE TEST
+        SET COL2 = 'U5-' || TO_CHAR(SYSTIMESTAMP, 'YYYYMMDDHH24MISSFF3');
+2026-04-16 23:11:15.013 DEBUG [scheduling-1] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1c252f5f]
+2026-04-16 23:11:15.013 INFO  [scheduling-1] c.e.s.batch.TestBatchScheduler - [UPDATE/5s] updated=2
+2026-04-16 23:11:15.104 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-16 23:11:15.111 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

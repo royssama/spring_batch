@@ -7,6 +7,7 @@ import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,21 +18,44 @@ import org.springframework.web.bind.annotation.RestController;
 public class BatchController {
 
     private final JobLauncher jobLauncher;
-    private final Job sampleJob;
+    private final Job generalSampleJob;
+    private final Job taskletDbJob;
+    private final Job chunkDbJob;
 
-    public BatchController(JobLauncher jobLauncher, Job sampleJob) {
+    public BatchController(JobLauncher jobLauncher,
+                           @Qualifier("generalSampleJob") Job generalSampleJob,
+                           @Qualifier("taskletDbJob") Job taskletDbJob,
+                           @Qualifier("chunkDbJob") Job chunkDbJob) {
         this.jobLauncher = jobLauncher;
-        this.sampleJob = sampleJob;
+        this.generalSampleJob = generalSampleJob;
+        this.taskletDbJob = taskletDbJob;
+        this.chunkDbJob = chunkDbJob;
     }
 
-    @Operation(summary = "Run sample batch job")
+    @Operation(summary = "Run general sample batch job")
     @PostMapping("/run")
     public String runBatch() throws Exception {
+        return runJob(generalSampleJob, "generalSampleJob");
+    }
+
+    @Operation(summary = "Run tasklet batch job")
+    @PostMapping("/run/tasklet")
+    public String runTaskletBatch() throws Exception {
+        return runJob(taskletDbJob, "taskletDbJob");
+    }
+
+    @Operation(summary = "Run chunk batch job")
+    @PostMapping("/run/chunk")
+    public String runChunkBatch() throws Exception {
+        return runJob(chunkDbJob, "chunkDbJob");
+    }
+
+    private String runJob(Job job, String jobName) throws Exception {
         JobParameters jobParameters = new JobParametersBuilder()
                 .addLong("timestamp", System.currentTimeMillis())
                 .toJobParameters();
 
-        JobExecution execution = jobLauncher.run(sampleJob, jobParameters);
-        return "Job execution id=" + execution.getId() + ", status=" + execution.getStatus();
+        JobExecution execution = jobLauncher.run(job, jobParameters);
+        return jobName + " execution id=" + execution.getId() + ", status=" + execution.getStatus();
     }
 }

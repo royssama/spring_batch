@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbatch.batchChunk.ChunkBatchMapper">
+
+    <update id="createChunkSourceTableIfNotExists">
+        BEGIN
+            EXECUTE IMMEDIATE '
+                CREATE TABLE TEST_CHUNK_SOURCE (
+                    ID NUMBER(19,0) PRIMARY KEY,
+                    COL1 VARCHAR2(100),
+                    COL2 VARCHAR2(100),
+                    COL3 VARCHAR2(100),
+                    PROCESSED CHAR(1) DEFAULT ''N'' NOT NULL
+                )';
+        EXCEPTION
+            WHEN OTHERS THEN
+                IF SQLCODE != -955 THEN
+                    RAISE;
+                END IF;
+        END;
+    </update>
+
+    <update id="createChunkTargetTableIfNotExists">
+        BEGIN
+            EXECUTE IMMEDIATE '
+                CREATE TABLE TEST_CHUNK_TARGET (
+                    ID NUMBER(19,0) PRIMARY KEY,
+                    COL1 VARCHAR2(100),
+                    COL2 VARCHAR2(100),
+                    COL3 VARCHAR2(100),
+                    CREATED_AT TIMESTAMP DEFAULT SYSTIMESTAMP
+                )';
+        EXCEPTION
+            WHEN OTHERS THEN
+                IF SQLCODE != -955 THEN
+                    RAISE;
+                END IF;
+        END;
+    </update>
+
+    <select id="countSource" resultType="int">
+        SELECT COUNT(*) FROM TEST_CHUNK_SOURCE
+    </select>
+
+    <select id="countSourceProcessed" resultType="int">
+        SELECT COUNT(*) FROM TEST_CHUNK_SOURCE WHERE PROCESSED = 'Y'
+    </select>
+
+    <select id="countTarget" resultType="int">
+        SELECT COUNT(*) FROM TEST_CHUNK_TARGET
+    </select>
+
+    <insert id="insertSeed">
+        INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
+        VALUES (#{id}, #{col1}, #{col2}, #{col3}, 'N')
+    </insert>
+
+    <select id="readPage" resultType="com.example.springbatch.batchChunk.ChunkItem">
+        SELECT ID, COL1, COL2, COL3
+        FROM (
+            SELECT t.*, ROW_NUMBER() OVER (ORDER BY ID) rn
+            FROM TEST_CHUNK_SOURCE t
+            WHERE PROCESSED = 'N'
+        )
+        WHERE rn > #{offset}
+          AND rn &lt;= (#{offset} + #{size})
+        ORDER BY ID
+    </select>
+
+    <insert id="insertTarget" parameterType="com.example.springbatch.batchChunk.ChunkItem">
+        INSERT INTO TEST_CHUNK_TARGET (ID, COL1, COL2, COL3)
+        VALUES (#{id}, #{col1}, #{col2}, #{col3})
+    </insert>
+
+    <update id="markProcessed">
+        UPDATE TEST_CHUNK_SOURCE
+        SET PROCESSED = 'Y'
+        WHERE ID = #{id}
+    </update>
+</mapper>
