@@ -55,17 +55,22 @@ public class FlowJobTaskletConfig {
                                       Step flowTaskletSuccessStep,
                                       Step flowTaskletRetryStep,
                                       Step flowTaskletStopStep) {
-        // 초보자용 핵심 정리:
-        // state   : flowTaskletRouteStep
-        // pattern : RETRY_PATH / STOP_PATH / * (나머지)
-        // next    : 각각 retry, stop, success step
+        // Flow 이름을 "flowTaskletBranchFlow"로 생성한다.
+        // 이 Flow는 route step의 ExitStatus 값에 따라 다음 step을 분기한다.
         return new FlowBuilder<Flow>("flowTaskletBranchFlow")
+                // 분기 기준이 되는 시작 step: flowTaskletRouteStep 실행
                 .start(flowTaskletRouteStep)
+                    // route step 결과가 "RETRY_PATH"이면 retry step으로 이동
                     .on("RETRY_PATH").to(flowTaskletRetryStep)
+                // 같은 route step을 기준으로 추가 분기 조건을 이어서 정의
                 .from(flowTaskletRouteStep)
+                    // route step 결과가 "STOP_PATH"이면 stop step으로 이동
                     .on("STOP_PATH").to(flowTaskletStopStep)
+                // 위 두 조건에 걸리지 않는 나머지 모든 결과값에 대한 기본 분기
                 .from(flowTaskletRouteStep)
+                    // * 는 wildcard: 나머지 케이스는 success step으로 이동
                     .on("*").to(flowTaskletSuccessStep)
+                // Flow 정의 종료
                 .end();
     }
 

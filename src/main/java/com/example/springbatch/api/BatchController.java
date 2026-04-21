@@ -21,15 +21,21 @@ public class BatchController {
     private final Job generalSampleJob;
     private final Job taskletDbJob;
     private final Job chunkDbJob;
+    private final Job taskletFlatFileSampleJob;
+    private final Job chunkFlatFileSampleJob;
 
     public BatchController(JobLauncher jobLauncher,
                            @Qualifier("generalSampleJob") Job generalSampleJob,
                            @Qualifier("taskletDbJob") Job taskletDbJob,
-                           @Qualifier("chunkDbJob") Job chunkDbJob) {
+                           @Qualifier("chunkDbJob") Job chunkDbJob,
+                           @Qualifier("taskletFlatFileSampleJob") Job taskletFlatFileSampleJob,
+                           @Qualifier("chunkFlatFileSampleJob") Job chunkFlatFileSampleJob) {
         this.jobLauncher = jobLauncher;
         this.generalSampleJob = generalSampleJob;
         this.taskletDbJob = taskletDbJob;
         this.chunkDbJob = chunkDbJob;
+        this.taskletFlatFileSampleJob = taskletFlatFileSampleJob;
+        this.chunkFlatFileSampleJob = chunkFlatFileSampleJob;
     }
 
     @Operation(summary = "Run general sample batch job")
@@ -48,6 +54,18 @@ public class BatchController {
     @PostMapping("/run/chunk")
     public String runChunkBatch() throws Exception {
         return runJob(chunkDbJob, "chunkDbJob");
+    }
+
+    @Operation(summary = "Run tasklet flat file sample job")
+    @PostMapping("/run/flat-file")
+    public String runFlatFileBatch() throws Exception {
+        return runJob(taskletFlatFileSampleJob, "taskletFlatFileSampleJob");
+    }
+
+    @Operation(summary = "Run chunk flat file sample job")
+    @PostMapping("/run/chunk-flat-file")
+    public String runChunkFlatFileBatch() throws Exception {
+        return runJob(chunkFlatFileSampleJob, "chunkFlatFileSampleJob");
     }
 
     private String runJob(Job job, String jobName) throws Exception {

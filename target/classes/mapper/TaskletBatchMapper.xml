@@ -24,4 +24,8 @@
         INSERT INTO TEST_TASKLET (MESSAGE)
         VALUES (#{message})
     </insert>
+
+    <select id="countTaskletLogs" resultType="int">
+        SELECT COUNT(*) FROM TEST_TASKLET
+    </select>
 </mapper>

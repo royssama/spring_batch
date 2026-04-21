@@ -22,17 +22,29 @@ public class AllBatchScheduler {
     private final Job taskletDbJob;
     private final Job chunkDbJob;
     private final Job taskletApiCallJob;
+    private final Job flowTaskletJob;
+    private final Job flowChunkJob;
+    private final Job taskletFlatFileSampleJob;
+    private final Job chunkFlatFileSampleJob;
 
     public AllBatchScheduler(TestBatchScheduler testBatchScheduler,
                              JobLauncher jobLauncher,
                              @Qualifier("taskletDbJob") Job taskletDbJob,
                              @Qualifier("chunkDbJob") Job chunkDbJob,
-                             @Qualifier("taskletApiCallJob") Job taskletApiCallJob) {
+                             @Qualifier("taskletApiCallJob") Job taskletApiCallJob,
+                             @Qualifier("flowTaskletJob") Job flowTaskletJob,
+                             @Qualifier("flowChunkJob") Job flowChunkJob,
+                             @Qualifier("taskletFlatFileSampleJob") Job taskletFlatFileSampleJob,
+                             @Qualifier("chunkFlatFileSampleJob") Job chunkFlatFileSampleJob) {
         this.testBatchScheduler = testBatchScheduler;
         this.jobLauncher = jobLauncher;
         this.taskletDbJob = taskletDbJob;
         this.chunkDbJob = chunkDbJob;
         this.taskletApiCallJob = taskletApiCallJob;
+        this.flowTaskletJob = flowTaskletJob;
+        this.flowChunkJob = flowChunkJob;
+        this.taskletFlatFileSampleJob = taskletFlatFileSampleJob;
+        this.chunkFlatFileSampleJob = chunkFlatFileSampleJob;
     }
 
     // -----------------------------
@@ -40,31 +52,31 @@ public class AllBatchScheduler {
     // -----------------------------
     @Scheduled(cron = "${app.batch.general.insert-cron:*/5 * * * * *}")
     public void runGeneralInsert() {
-        log.info("1: runGeneralInsert");
+      //  log.info("1: runGeneralInsert");
       //  testBatchScheduler.insertEveryMinute();
     }
 
     @Scheduled(cron = "${app.batch.general.update5s-cron:*/10 * * * * *}")
     public void runGeneralUpdate5s() {
-        log.info("2: runGeneralUpdate5s");
+      //  log.info("2: runGeneralUpdate5s");
      //   testBatchScheduler.updateEvery5Seconds();
     }
 
     @Scheduled(cron = "${app.batch.general.update10s-cron:*/5 * * * * *}")
     public void runGeneralUpdate10s() {
-        log.info("3: runGeneralUpdate10s");
+       //log.info("3: runGeneralUpdate10s");
      //   testBatchScheduler.updateEvery10Seconds();
     }
 
     @Scheduled(cron = "${app.batch.general.select15s-cron:*/20 * * * * *}")
     public void runGeneralSelect15s() {
-        log.info("4: runGeneralSelect15s");
+       // log.info("4: runGeneralSelect15s");
       //  testBatchScheduler.selectEvery15Seconds();
     }
 
     @Scheduled(cron = "${app.batch.general.delete-cron:*/25 * * * * *}")
     public void runGeneralDelete() {
-        log.info("5: runGeneralDelete");
+       // log.info("5: runGeneralDelete");
       //  testBatchScheduler.deleteAllEveryMinute();
     }
 
@@ -73,8 +85,8 @@ public class AllBatchScheduler {
     // -----------------------------
     @Scheduled(cron = "${app.batch.tasklet.cron:*/5 * * * * *}")
     public void runTaskletJob() {
-        log.info("6: runTaskletJob");
-        runJob(taskletDbJob, "taskletDbJob");
+       // log.info("6: runTaskletJob");
+       // runJob(taskletDbJob, "taskletDbJob");
     }
 
     // -----------------------------
@@ -82,8 +94,8 @@ public class AllBatchScheduler {
     // -----------------------------
     @Scheduled(cron = "${app.batch.chunk.cron:*/5 * * * * *}")
     public void runChunkJob() {
-        log.info("7: runChunkJob");
-        runJob(chunkDbJob, "chunkDbJob");
+      //  log.info("7: runChunkJob");
+       // runJob(chunkDbJob, "chunkDbJob");
     }
 
     // -----------------------------
@@ -91,8 +103,44 @@ public class AllBatchScheduler {
     // -----------------------------
     @Scheduled(cron = "${app.batch.tasklet-api.cron:*/40 * * * * *}")
     public void runTaskletApiJob() {
-        log.info("8: runTaskletApiJob");
-        runJob(taskletApiCallJob, "taskletApiCallJob");
+       // log.info("8: runTaskletApiJob");
+      //  runJob(taskletApiCallJob, "taskletApiCallJob");
+    }
+
+    // -----------------------------
+    // flowJobBatchTasklet 방식 (src/main/java/com/example/springbatch/flowJobBatchTasklet)
+    // -----------------------------
+    @Scheduled(cron = "${app.batch.flow-tasklet.cron:*/5 * * * * *}")
+    public void runFlowTaskletJob() {
+        log.info("9: runFlowTaskletJob");
+        runJob(flowTaskletJob, "flowTaskletJob");
+    }
+
+    // -----------------------------
+    // flowJobBatchChunk 방식 (src/main/java/com/example/springbatch/flowJobBatchChunk)
+    // -----------------------------
+    @Scheduled(cron = "${app.batch.flow-chunk.cron:*/50 * * * * *}")
+    public void runFlowChunkJob() {
+       // log.info("10: runFlowChunkJob");
+       // runJob(flowChunkJob, "flowChunkJob");
+    }
+
+    // -----------------------------
+    // taskletFlatFileItemWriter 방식 (src/main/java/com/example/springbatch/taskletFlatFileItemWriter)
+    // -----------------------------
+    @Scheduled(cron = "${app.batch.tasklet-flat-file.cron:*/55 * * * * *}")
+    public void runTaskletFlatFileJob() {
+        log.info("11: runTaskletFlatFileJob");
+        runJob(taskletFlatFileSampleJob, "taskletFlatFileSampleJob");
+    }
+
+    // -----------------------------
+    // chunkFlatFileItemWriter 방식 (src/main/java/com/example/springbatch/chunkFlatFileItemWriter)
+    // -----------------------------
+    @Scheduled(cron = "${app.batch.chunk-flat-file.cron:0 * * * * *}")
+    public void runChunkFlatFileJob() {
+        log.info("12: runChunkFlatFileJob");
+        runJob(chunkFlatFileSampleJob, "chunkFlatFileSampleJob");
     }
 
     private void runJob(Job job, String jobName) {

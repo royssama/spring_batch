@@ -40,5 +40,18 @@ app:
       delete-cron: "*/25 * * * * *"
     tasklet:
       cron: "*/30 * * * * *"
+    tasklet-api:
+      cron: "*/40 * * * * *"
+      endpoint-url: "http://localhost:8081/api/batch/run/tasklet"
+      connect-timeout-ms: 3000
+      read-timeout-ms: 5000
+    flow-tasklet:
+      cron: "*/5 * * * * *"
+    flow-chunk:
+      cron: "*/50 * * * * *"
+    tasklet-flat-file:
+      cron: "*/55 * * * * *"
+    chunk-flat-file:
+      cron: "0 * * * * *"
     chunk:
       cron: "*/35 * * * * *"

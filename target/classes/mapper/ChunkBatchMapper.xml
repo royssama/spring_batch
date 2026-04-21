@@ -44,6 +44,14 @@
         SELECT COUNT(*) FROM TEST_CHUNK_SOURCE
     </select>
 
+    <select id="countSourceProcessed" resultType="int">
+        SELECT COUNT(*) FROM TEST_CHUNK_SOURCE WHERE PROCESSED = 'Y'
+    </select>
+
+    <select id="countTarget" resultType="int">
+        SELECT COUNT(*) FROM TEST_CHUNK_TARGET
+    </select>
+
     <insert id="insertSeed">
         INSERT INTO TEST_CHUNK_SOURCE (ID, COL1, COL2, COL3, PROCESSED)
         VALUES (#{id}, #{col1}, #{col2}, #{col3}, 'N')
