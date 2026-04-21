@@ -21,15 +21,18 @@ public class AllBatchScheduler {
     private final JobLauncher jobLauncher;
     private final Job taskletDbJob;
     private final Job chunkDbJob;
+    private final Job taskletApiCallJob;
 
     public AllBatchScheduler(TestBatchScheduler testBatchScheduler,
                              JobLauncher jobLauncher,
                              @Qualifier("taskletDbJob") Job taskletDbJob,
-                             @Qualifier("chunkDbJob") Job chunkDbJob) {
+                             @Qualifier("chunkDbJob") Job chunkDbJob,
+                             @Qualifier("taskletApiCallJob") Job taskletApiCallJob) {
         this.testBatchScheduler = testBatchScheduler;
         this.jobLauncher = jobLauncher;
         this.taskletDbJob = taskletDbJob;
         this.chunkDbJob = chunkDbJob;
+        this.taskletApiCallJob = taskletApiCallJob;
     }
 
     // -----------------------------
@@ -81,6 +84,15 @@ public class AllBatchScheduler {
     public void runChunkJob() {
         log.info("7: runChunkJob");
         runJob(chunkDbJob, "chunkDbJob");
+    }
+
+    // -----------------------------
+    // taskletApi 방식 (src/main/java/com/example/springbatch/taskletApi)
+    // -----------------------------
+    @Scheduled(cron = "${app.batch.tasklet-api.cron:*/40 * * * * *}")
+    public void runTaskletApiJob() {
+        log.info("8: runTaskletApiJob");
+        runJob(taskletApiCallJob, "taskletApiCallJob");
     }
 
     private void runJob(Job job, String jobName) {
