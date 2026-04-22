@@ -22,17 +22,23 @@ public class AllBatchScheduler {
     private final Job taskletDbJob;
     private final Job chunkDbJob;
     private final Job taskletApiCallJob;
+    private final Job flowTaskletJob;
+    private final Job flowChunkJob;
 
     public AllBatchScheduler(TestBatchScheduler testBatchScheduler,
                              JobLauncher jobLauncher,
                              @Qualifier("taskletDbJob") Job taskletDbJob,
                              @Qualifier("chunkDbJob") Job chunkDbJob,
-                             @Qualifier("taskletApiCallJob") Job taskletApiCallJob) {
+                             @Qualifier("taskletApiCallJob") Job taskletApiCallJob,
+                             @Qualifier("flowTaskletJob") Job flowTaskletJob,
+                             @Qualifier("flowChunkJob") Job flowChunkJob) {
         this.testBatchScheduler = testBatchScheduler;
         this.jobLauncher = jobLauncher;
         this.taskletDbJob = taskletDbJob;
         this.chunkDbJob = chunkDbJob;
         this.taskletApiCallJob = taskletApiCallJob;
+        this.flowTaskletJob = flowTaskletJob;
+        this.flowChunkJob = flowChunkJob;
     }
 
     // -----------------------------
@@ -93,6 +99,24 @@ public class AllBatchScheduler {
     public void runTaskletApiJob() {
         log.info("8: runTaskletApiJob");
         runJob(taskletApiCallJob, "taskletApiCallJob");
+    }
+
+    // -----------------------------
+    // flowJobBatchTasklet 방식 (src/main/java/com/example/springbatch/flowJobBatchTasklet)
+    // -----------------------------
+    @Scheduled(cron = "${app.batch.flow-tasklet.cron:*/45 * * * * *}")
+    public void runFlowTaskletJob() {
+        log.info("9: runFlowTaskletJob");
+        runJob(flowTaskletJob, "flowTaskletJob");
+    }
+
+    // -----------------------------
+    // flowJobBatchChunk 방식 (src/main/java/com/example/springbatch/flowJobBatchChunk)
+    // -----------------------------
+    @Scheduled(cron = "${app.batch.flow-chunk.cron:*/50 * * * * *}")
+    public void runFlowChunkJob() {
+        log.info("10: runFlowChunkJob");
+        runJob(flowChunkJob, "flowChunkJob");
     }
 
     private void runJob(Job job, String jobName) {

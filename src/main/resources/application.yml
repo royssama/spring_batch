@@ -45,5 +45,9 @@ app:
       endpoint-url: "http://localhost:8081/api/batch/run/tasklet"
       connect-timeout-ms: 3000
       read-timeout-ms: 5000
+    flow-tasklet:
+      cron: "*/45 * * * * *"
+    flow-chunk:
+      cron: "*/50 * * * * *"
     chunk:
       cron: "*/35 * * * * *"
