@@ -15,8 +15,8 @@ public class FlowTaskletRetryTasklet implements Tasklet {
 
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) {
-        // route가 RETRY일 때 들어오는 분기 step 예시입니다.
-        log.info("[FLOW-TASKLET] retry path step executed");
+        // DB 조회값이 0건이면 여기로 들어오도록 구성한 재시도 분기 예시입니다.
+        log.info("[FLOW-TASKLET] retry path step executed (example: dbCount=0)");
         return RepeatStatus.FINISHED;
     }
 }

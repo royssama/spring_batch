@@ -1,5 +1,6 @@
 package com.example.springbatch.flowJobBatchTasklet;
 
+import com.example.springbatch.batchTasklet.TaskletBatchMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.ExitStatus;
@@ -13,14 +14,22 @@ import org.springframework.stereotype.Component;
 public class FlowTaskletRouteTasklet implements Tasklet {
 
     private static final Logger log = LoggerFactory.getLogger(FlowTaskletRouteTasklet.class);
+    private final TaskletBatchMapper taskletBatchMapper;
+
+    public FlowTaskletRouteTasklet(TaskletBatchMapper taskletBatchMapper) {
+        this.taskletBatchMapper = taskletBatchMapper;
+    }
 
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) {
         // 초보자용 설명:
-        // job 실행 시 파라미터로 route 값을 주면 flow 분기 경로를 바꿀 수 있습니다.
+        // 1) 우선 job 파라미터(route)가 있으면 수동 분기를 사용합니다.
         // - route=RETRY -> RETRY_PATH
         // - route=STOP  -> STOP_PATH
-        // - 그 외/미입력 -> 기본 COMPLETED 경로
+        // 2) route가 없으면 DB(TEST_TASKLET) 조회 결과(count)로 분기합니다.
+        // - count == 0        -> RETRY_PATH
+        // - 1 <= count < 5    -> SUCCESS_PATH
+        // - count >= 5        -> STOP_PATH
         Object routeValue = chunkContext.getStepContext().getJobParameters().get("route");
         String route = routeValue == null ? "" : routeValue.toString();
 
@@ -36,8 +45,22 @@ public class FlowTaskletRouteTasklet implements Tasklet {
             return RepeatStatus.FINISHED;
         }
 
-        // 별도 ExitStatus를 지정하지 않으면 기본값(COMPLETED)으로 처리됩니다.
-        log.info("[FLOW-TASKLET] route={} -> ExitStatus=COMPLETED(default)", route);
+        int logCount = taskletBatchMapper.countTaskletLogs();
+
+        if (logCount == 0) {
+            contribution.setExitStatus(new ExitStatus("RETRY_PATH"));
+            log.info("[FLOW-TASKLET] dbCount={} -> ExitStatus=RETRY_PATH", logCount);
+            return RepeatStatus.FINISHED;
+        }
+
+        if (logCount >= 5) {
+            contribution.setExitStatus(new ExitStatus("STOP_PATH"));
+            log.info("[FLOW-TASKLET] dbCount={} -> ExitStatus=STOP_PATH", logCount);
+            return RepeatStatus.FINISHED;
+        }
+
+        contribution.setExitStatus(new ExitStatus("SUCCESS_PATH"));
+        log.info("[FLOW-TASKLET] dbCount={} -> ExitStatus=SUCCESS_PATH", logCount);
         return RepeatStatus.FINISHED;
     }
 }

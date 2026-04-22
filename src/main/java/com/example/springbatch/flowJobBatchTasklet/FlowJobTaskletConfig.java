@@ -57,13 +57,15 @@ public class FlowJobTaskletConfig {
                                       Step flowTaskletStopStep) {
         // 초보자용 핵심 정리:
         // state   : flowTaskletRouteStep
-        // pattern : RETRY_PATH / STOP_PATH / * (나머지)
+        // pattern : RETRY_PATH / STOP_PATH / SUCCESS_PATH / * (예외 fallback)
         // next    : 각각 retry, stop, success step
         return new FlowBuilder<Flow>("flowTaskletBranchFlow")
                 .start(flowTaskletRouteStep)
                     .on("RETRY_PATH").to(flowTaskletRetryStep)
                 .from(flowTaskletRouteStep)
                     .on("STOP_PATH").to(flowTaskletStopStep)
+                .from(flowTaskletRouteStep)
+                    .on("SUCCESS_PATH").to(flowTaskletSuccessStep)
                 .from(flowTaskletRouteStep)
                     .on("*").to(flowTaskletSuccessStep)
                 .end();

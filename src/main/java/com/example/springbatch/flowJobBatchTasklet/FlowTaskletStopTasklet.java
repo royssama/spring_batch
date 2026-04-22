@@ -15,8 +15,8 @@ public class FlowTaskletStopTasklet implements Tasklet {
 
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) {
-        // STOP 분기로 들어왔을 때 실행되는 Tasklet 예시입니다.
-        log.info("[FLOW-TASKLET] STOP 분기 Step 실행");
+        // DB 조회값이 5건 이상일 때 STOP_PATH로 들어오는 분기 예시입니다.
+        log.info("[FLOW-TASKLET] stop path step executed (example: dbCount>=5)");
         return RepeatStatus.FINISHED;
     }
 }

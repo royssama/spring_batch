@@ -15,8 +15,9 @@ public class FlowTaskletSuccessTasklet implements Tasklet {
 
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) {
-        // route가 RETRY/STOP이 아닐 때(패턴 '*') 도착하는 성공 분기 Step입니다.
-        log.info("[FLOW-TASKLET] success branch step executed.");
+        // DB 조회값이 1~4건일 때 성공 분기로 들어오는 예시입니다.
+        // (설정상 SUCCESS_PATH 또는 fallback '*' 매칭 시 이 step 실행)
+        log.info("[FLOW-TASKLET] success branch step executed (example: 1<=dbCount<5).");
         return RepeatStatus.FINISHED;
     }
 }
