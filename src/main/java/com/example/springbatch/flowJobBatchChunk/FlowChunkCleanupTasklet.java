@@ -15,8 +15,9 @@ public class FlowChunkCleanupTasklet implements Tasklet {
 
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) {
-        // route=SKIP_CHUNK일 때 들어오는 대체 분기 Step입니다.
-        log.info("[FLOW-CHUNK] cleanup branch step executed. chunk step was skipped.");
+        // DB 조회 결과상 아직 처리할 데이터가 없을 때(예: 미처리 건수 0) 들어오는 분기입니다.
+        // 이 분기에서는 chunk step을 건너뛰고 종료성 정리 로그만 남깁니다.
+        log.info("[FLOW-CHUNK] cleanup branch step executed. no pending source rows.");
         return RepeatStatus.FINISHED;
     }
 }

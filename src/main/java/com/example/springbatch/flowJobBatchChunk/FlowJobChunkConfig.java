@@ -63,7 +63,7 @@ public class FlowJobChunkConfig {
                                     Step flowChunkCleanupStep) {
         // 초보자용 핵심:
         // state   : flowChunkRouteStep
-        // pattern : PROCESS_PATH / SKIP_PATH / * (기타)
+        // pattern : PROCESS_PATH / SKIP_PATH / SUMMARY_PATH / * (기타)
         // next    : process, cleanup, summary step
         return new FlowBuilder<Flow>("flowChunkBranchFlow")
                 .start(flowChunkRouteStep)
@@ -71,6 +71,8 @@ public class FlowJobChunkConfig {
                         .next(flowChunkSummaryStep) // 처리 분기로 갔으면 요약 step까지 이어서 실행
                 .from(flowChunkRouteStep)
                     .on("SKIP_PATH").to(flowChunkCleanupStep)
+                .from(flowChunkRouteStep)
+                    .on("SUMMARY_PATH").to(flowChunkSummaryStep)
                 .from(flowChunkRouteStep)
                     .on("*").to(flowChunkSummaryStep)
                 .end();
