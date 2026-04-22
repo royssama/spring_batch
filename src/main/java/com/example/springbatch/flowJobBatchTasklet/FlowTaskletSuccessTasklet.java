@@ -12,12 +12,31 @@ import org.springframework.stereotype.Component;
 public class FlowTaskletSuccessTasklet implements Tasklet {
 
     private static final Logger log = LoggerFactory.getLogger(FlowTaskletSuccessTasklet.class);
+    private final FlowTaskletDbMapper flowTaskletDbMapper;
+
+    public FlowTaskletSuccessTasklet(FlowTaskletDbMapper flowTaskletDbMapper) {
+        this.flowTaskletDbMapper = flowTaskletDbMapper;
+    }
 
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) {
-        // DB 조회값이 1~4건일 때 성공 분기로 들어오는 예시입니다.
-        // (설정상 SUCCESS_PATH 또는 fallback '*' 매칭 시 이 step 실행)
-        log.info("[FLOW-TASKLET] success branch step executed (example: 1<=dbCount<5).");
+        // 실무형 예제:
+        // 성공 분기로 들어오면 이력 테이블(TEST_FLOW_TASKLET_HISTORY)에 SUCCESS 결과를 남깁니다.
+        Long jobExecutionId = chunkContext.getStepContext().getStepExecution().getJobExecutionId();
+        int historyCount = flowTaskletDbMapper.countFlowTaskletHistory();
+        String detail = "success branch completed. existingHistoryCount=" + historyCount;
+        flowTaskletDbMapper.insertFlowTaskletHistory(
+                safeExecutionId(jobExecutionId),
+                "flowTaskletSuccessStep",
+                "SUCCESS_PATH",
+                detail
+        );
+
+        log.info("[FLOW-TASKLET] success path recorded. jobExecutionId={}, detail={}", jobExecutionId, detail);
         return RepeatStatus.FINISHED;
+    }
+
+    private Long safeExecutionId(Long jobExecutionId) {
+        return jobExecutionId == null ? -1L : jobExecutionId;
     }
 }

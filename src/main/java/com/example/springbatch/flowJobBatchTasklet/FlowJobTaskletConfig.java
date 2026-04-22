@@ -1,5 +1,6 @@
 package com.example.springbatch.flowJobBatchTasklet;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.job.builder.FlowBuilder;
@@ -13,6 +14,18 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
 public class FlowJobTaskletConfig {
+
+    private final FlowTaskletDbMapper flowTaskletDbMapper;
+
+    public FlowJobTaskletConfig(FlowTaskletDbMapper flowTaskletDbMapper) {
+        this.flowTaskletDbMapper = flowTaskletDbMapper;
+    }
+
+    @PostConstruct
+    public void initFlowTaskletSchema() {
+        // 앱 시작 시 분기 이력 테이블을 자동 생성합니다(이미 있으면 유지).
+        flowTaskletDbMapper.createFlowTaskletHistoryTableIfNotExists();
+    }
 
     @Bean
     public Step flowTaskletRouteStep(JobRepository jobRepository,

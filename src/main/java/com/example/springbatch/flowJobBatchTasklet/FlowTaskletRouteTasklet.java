@@ -49,18 +49,18 @@ public class FlowTaskletRouteTasklet implements Tasklet {
 
         if (logCount == 0) {
             contribution.setExitStatus(new ExitStatus("RETRY_PATH"));
-            log.info("[FLOW-TASKLET] dbCount={} -> ExitStatus=RETRY_PATH", logCount);
+            log.info("[FLOW-TASKLET] TEST_TASKLET count={} -> ExitStatus=RETRY_PATH", logCount);
             return RepeatStatus.FINISHED;
         }
 
         if (logCount >= 5) {
             contribution.setExitStatus(new ExitStatus("STOP_PATH"));
-            log.info("[FLOW-TASKLET] dbCount={} -> ExitStatus=STOP_PATH", logCount);
+            log.info("[FLOW-TASKLET] TEST_TASKLET count={} -> ExitStatus=STOP_PATH", logCount);
             return RepeatStatus.FINISHED;
         }
 
         contribution.setExitStatus(new ExitStatus("SUCCESS_PATH"));
-        log.info("[FLOW-TASKLET] dbCount={} -> ExitStatus=SUCCESS_PATH", logCount);
+        log.info("[FLOW-TASKLET] TEST_TASKLET count={} -> ExitStatus=SUCCESS_PATH", logCount);
         return RepeatStatus.FINISHED;
     }
 }
